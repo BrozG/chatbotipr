@@ -591,6 +591,6 @@ async def chat(request: Request, payload: str = Form(...), files: list[UploadFil
     return out
 
 
-FRONT = Path(__file__).resolve().parent.parent / "frontend"
-if FRONT.is_dir():
+FRONT = Path(__file__).resolve().parent.parent / "public"
+if FRONT.is_dir() and not os.getenv("VERCEL"):
     app.mount("/", StaticFiles(directory=FRONT, html=True), name="web")
