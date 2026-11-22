@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Culture Assistant (Prototype) | Cultural Affairs &amp; Heritage Department, Government of Sikkim</title>
+<meta name="description" content="Prototype assistant for questions about Sikkim's culture, State Libraries, State Archives and the Song &amp; Drama Unit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<div class="utility">
+  <div class="wrap">
+    <span>Government of Sikkim</span>
+    <div class="tools" role="group" aria-label="Accessibility tools">
+      <button type="button" id="fsDown" aria-label="Decrease text size">A−</button>
+      <button type="button" id="fsReset" aria-label="Normal text size">A</button>
+      <button type="button" id="fsUp" aria-label="Increase text size">A+</button>
+      <button type="button" id="hc" aria-pressed="false">High contrast</button>
+    </div>
+  </div>
+</div>
+
+<header class="banner">
+  <div class="wrap">
+    <div class="brand">
+      <!-- Replace this box with the official department logo supplied by the Department.
+           Do not use the State Emblem without written permission. -->
+      <div class="logo" role="img" aria-label="Placeholder for the department logo">LOGO</div>
+      <div>
+        <p class="gov">Government of Sikkim</p>
+        <h1>Cultural Affairs &amp; Heritage Department</h1>
+        <p class="sub">Culture Assistant <span class="tag">Prototype</span></p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="menu" aria-label="Department sections">
+  <div class="wrap">
+    <button type="button" id="menu" aria-controls="side" aria-expanded="false">☰ Chats</button>
+    <a href="https://culture.sikkim.gov.in" target="_blank" rel="noopener noreferrer">Department website<span class="sr"> (opens in a new tab)</span></a>
+    <a href="https://culture.sikkim.gov.in/visitor/library" target="_blank" rel="noopener noreferrer">State Libraries<span class="sr"> (opens in a new tab)</span></a>
+    <a href="https://culture.sikkim.gov.in/visitor/archives" target="_blank" rel="noopener noreferrer">State Archives<span class="sr"> (opens in a new tab)</span></a>
+    <a href="https://culture.sikkim.gov.in/visitor/songdrama" target="_blank" rel="noopener noreferrer">Song &amp; Drama<span class="sr"> (opens in a new tab)</span></a>
+  </div>
+</nav>
+
+<div class="app">
+  <aside id="side" aria-label="Your chats">
+    <button id="newChat" class="primary" type="button">New chat</button>
+    <nav id="chatList" aria-label="Chat history"></nav>
+    <button id="memBtn" class="ghost" type="button">Memory</button>
+  </aside>
+
+  <main id="main" tabindex="-1">
+    <div id="busybar" aria-hidden="true"></div>
+    <div id="log" role="log" aria-live="polite" aria-label="Conversation"></div>
+
+    <div id="memOffer" hidden></div>
+
+    <form id="composer" autocomplete="off">
+      <div id="pending"></div>
+      <label for="input" class="sr">Type your question</label>
+      <div class="row">
+        <button type="button" id="attach" class="ghost" aria-label="Attach an image or PDF">Attach</button>
+        <input type="file" id="file" accept="image/jpeg,image/png,image/webp,application/pdf" multiple hidden>
+        <textarea id="input" rows="1" maxlength="2000" placeholder="Ask about Sikkim's culture, libraries, archives…"></textarea>
+        <button id="send" class="primary" type="submit">Send</button>
+      </div>
+    </form>
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Disclaimer:</strong> Prototype. Answers are AI-generated from web sources and may be incomplete or wrong. Confirm anything official with the Department. Do not share personal information. Images come from the web and may be protected by copyright. Content and branding are subject to approval by the Cultural Affairs &amp; Heritage Department, Government of Sikkim.</p>
+  </div>
+</footer>
+
+<dialog id="memDlg" aria-labelledby="memTitle">
+  <h2 id="memTitle">Memory</h2>
+  <p class="muted">Short notes the assistant can use in every chat. Stored only in this browser.</p>
+  <label class="check"><input type="checkbox" id="memOn"> Use memory</label>
+  <ul id="memList"></ul>
+  <div class="row">
+    <label for="memNew" class="sr">New memory note</label>
+    <input id="memNew" type="text" maxlength="150" placeholder="Add a note, e.g. I prefer Nepali">
+    <button id="memAdd" class="primary" type="button">Add</button>
+  </div>
+  <div class="row end">
+    <button id="memClear" class="ghost" type="button">Clear all</button>
+    <button id="memClose" class="primary" type="button">Done</button>
+  </div>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>
